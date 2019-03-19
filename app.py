@@ -1,6 +1,8 @@
-#!/usr/bin/env python
-
+from reader import Reader
+import SimpleMFRC522
+import RPi.GPIO as GPIO
 import signal
+
 
 class App:
     def __init__(self):
@@ -8,30 +10,16 @@ class App:
         signal.signal(signal.SIGINT, self.exit)
         signal.signal(signal.SIGTERM, self.exit)
 
-    def exit(self,signum, frame):
+    def exit(self, signum, frame):
         self.terminate = True
 
-import RPi.GPIO as GPIO
-import SimpleMFRC522
-import os
-import socket
 
 if __name__ == '__main__':
-    reader = SimpleMFRC522.SimpleMFRC522()
+    reader = Reader(SimpleMFRC522.SimpleMFRC522())
 
     while not App().terminate:
         try:
-            id, text = reader.read()
-
-            if not text:
-                print("Error: Card has no text")
-                continue
-
-            values = text.split(' ')
-            ip = socket.gethostbyname(values[0])
-            uri = values[1]
-
-            os.system("python dlnap.py --ip {} --play {}".format(ip, uri))
+            reader.read()
         except:
             print("Error: Unable to read card")
         finally:
