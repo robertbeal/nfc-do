@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     while not App().terminate:
         try:
-            reader.read()
+            reader.read().execute()
         except:
             print("Error: Unable to read card")
         finally:
