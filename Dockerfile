@@ -1,4 +1,4 @@
-FROM resin/aarch64-alpine
+FROM resin/rpi-alpine
 
 WORKDIR /app
 
