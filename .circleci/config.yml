@@ -8,9 +8,9 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-        command: |
-          docker run --rm --privileged multiarch/qemu-user-static:register
-          docker build -t robertbeal/nfc-do .
+          command: |
+            docker run --rm --privileged multiarch/qemu-user-static:register
+            docker build -t robertbeal/nfc-do .
 
 workflows:
   version: 2
