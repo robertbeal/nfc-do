@@ -1,4 +1,4 @@
-FROM arm32v6/alpine
+FROM resin/aarch64-alpine
 
 WORKDIR /app
 
