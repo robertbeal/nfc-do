@@ -11,6 +11,8 @@ jobs:
           command: |
             docker run --rm --privileged multiarch/qemu-user-static:register
             docker build -t robertbeal/nfc-do .
+            docker login
+            docker push robertbeal/nfc-do
 
 workflows:
   version: 2
