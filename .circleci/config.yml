@@ -11,11 +11,12 @@ jobs:
           command: |
             docker run --rm --privileged multiarch/qemu-user-static:register
             docker build -t robertbeal/nfc-do .
-            docker login
+            docker login -u $username -p $password
             docker push robertbeal/nfc-do
 
 workflows:
   version: 2
   commit:
     jobs:
-      - build
+      - build:
+          context: DockerHub
