@@ -20,7 +20,7 @@ if __name__ == '__main__':
     while not App().terminate:
         try:
             reader.read().execute()
-        except Exception, e:
+        except Exception as e:
             print("Error: Unable to read card - " + str(e))
         finally:
             GPIO.cleanup()
