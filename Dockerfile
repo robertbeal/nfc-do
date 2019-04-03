@@ -17,7 +17,7 @@ RUN apk add --no-cache --virtual=build-dependencies \
   && pipenv install -d \
   # external packages
   && git clone https://github.com/pimylifeup/MFRC522-python.git --depth 1 \
-  && mv MFRC522-python/* ./ && rm -Rf MFRC522-python \
+  && mv MFRC522-python/mfrc522/*522.py ./ && rm -Rf MFRC522-python \
   && wget -O ./dlnap.py https://raw.githubusercontent.com/cherezov/dlnap/master/dlnap/dlnap.py \
   # cleanup
   && apk del --purge build-dependencies \
