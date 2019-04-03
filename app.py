@@ -15,7 +15,7 @@ class App:
 
 
 if __name__ == '__main__':
-    reader = Reader(SimpleMFRC522.SimpleMFRC522())
+    reader = Reader(SimpleMFRC522())
 
     while not App().terminate:
         try:
