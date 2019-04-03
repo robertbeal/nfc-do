@@ -16,6 +16,7 @@ class App:
 
 if __name__ == '__main__':
     reader = Reader(SimpleMFRC522())
+    print("Reader listening...")
 
     while not App().terminate:
         try:
