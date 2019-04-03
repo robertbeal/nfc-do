@@ -8,7 +8,7 @@ class InputReader:
         self.value = value
 
     def read(self):
-        return self.value
+        return ['id', self.value]
 
 
 class TestReader(unittest.TestCase):

@@ -8,7 +8,7 @@ class Reader:
         self.__reader = reader
 
     def read(self):
-        text = self.__reader.read()
+        text = self.__reader.read()[1]
 
         if not text:
             raise Exception("Empty input")

@@ -23,5 +23,5 @@ if __name__ == '__main__':
             reader.read().execute()
         except Exception as e:
             print("Error: Unable to read card - " + str(e))
-        finally:
-            GPIO.cleanup()
+
+GPIO.cleanup()
