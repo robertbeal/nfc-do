@@ -1,5 +1,5 @@
 from reader import Reader
-import SimpleMFRC522
+from mfrc522 import SimpleMFRC522
 import RPi.GPIO as GPIO
 import signal
 
