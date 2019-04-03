@@ -13,7 +13,7 @@ RUN apk add --no-cache --virtual=build-dependencies \
   python3 \
   wget \
   # pip
-  && python3 -m pip --no-cache-dir install --upgrade pip pipenv RPi.GPIO \
+  && python3 -m pip --no-cache-dir install --upgrade pip pipenv RPi.GPIO spidev \
   && pipenv install -d \
   # external packages
   && git clone https://github.com/pimylifeup/MFRC522-python.git --depth 1 \
