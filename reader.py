@@ -8,14 +8,17 @@ class Reader:
         self.__reader = reader
 
     def read(self):
-        text = self.__reader.read()[1]
+        id, text = self.__reader.read()
+
+        print("Reading card: {}".format(id))
+        print("Text: {}".format(text))
 
         if not text:
-            raise Exception("Empty input")
+            raise Exception("No 'text' on card")
 
-        values = text.strip().split(' ')
+        values = text.strip().split(" ")
 
-        if(len(values) != 2):
+        if len(values) != 2:
             raise Exception("Invalid number of values")
 
         ip = self.__ip(values[0])
