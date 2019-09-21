@@ -11,7 +11,7 @@ if __name__ == "__main__":
             id = reader.read()[0]
 
             ip = socket.gethostbyname("hifi.rb.kohi.uk")
-            cards = {"8115724414": "http://server.rb.kohi.uk:8200/MediaItems/17356.mp3"}
+            cards = {8115724414: "http://server.rb.kohi.uk:8200/MediaItems/17356.mp3"}
 
             os.system("python dlnap.py --ip {} --play {}".format(ip, cards[id]))
     except KeyboardInterrupt:
