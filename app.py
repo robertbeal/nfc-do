@@ -14,14 +14,14 @@ class App:
         self.terminate = True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     reader = Reader(SimpleMFRC522())
-    print("Reader listening...")
 
-    while not App().terminate:
-        try:
-            reader.read().execute()
-        except Exception as e:
-            print("Error: Unable to read card - " + str(e))
+    try:
+        while True:
+            action = reader.read()
 
-GPIO.cleanup()
+            if action:
+                action.execute()
+    except KeyboardInterrupt:
+        GPIO.cleanup()

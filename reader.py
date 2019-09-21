@@ -6,6 +6,7 @@ from urllib.parse import urlparse
 class Reader:
     def __init__(self, reader):
         self.__reader = reader
+        print("Reader listening...")
 
     def read(self):
         id, text = self.__reader.read()
@@ -14,21 +15,25 @@ class Reader:
         print("Text: {}".format(text))
 
         if not text:
-            raise Exception("No 'text' on card")
+            print("No 'text' on card")
+            return
 
         values = text.strip().split(" ")
 
         if len(values) != 2:
-            raise Exception("Invalid number of values")
+            print("Invalid number of values")
+            return
 
         ip = self.__ip(values[0])
-        uri = urlparse(values[1])
 
         if not ip:
-            raise Exception("Invalid ip")
+            return
+
+        uri = urlparse(values[1])
 
         if not uri.scheme or not uri.netloc:
-            raise Exception("Invalid url")
+            print("Invalid url: {}".format(values[1]))
+            return
 
         return Action(ip, uri.geturl())
 
@@ -36,6 +41,7 @@ class Reader:
         try:
             return socket.gethostbyname(hostname)
         except:
+            print("Unable to lookup ip for host: {}".format(hostname))
             return None
 
 
