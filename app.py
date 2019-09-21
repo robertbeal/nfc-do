@@ -3,18 +3,6 @@ import socket
 from mfrc522 import SimpleMFRC522
 import RPi.GPIO as GPIO
 from urllib.parse import urlparse
-import signal
-
-
-class App:
-    def __init__(self):
-        self.terminate = False
-        signal.signal(signal.SIGINT, self.exit)
-        signal.signal(signal.SIGTERM, self.exit)
-
-    def exit(self, signum, frame):
-        self.terminate = True
-
 
 if __name__ == "__main__":
     reader = SimpleMFRC522()
