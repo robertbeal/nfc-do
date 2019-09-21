@@ -2,7 +2,6 @@ import os
 import socket
 from mfrc522 import SimpleMFRC522
 import RPi.GPIO as GPIO
-from urllib.parse import urlparse
 
 if __name__ == "__main__":
     reader = SimpleMFRC522()
