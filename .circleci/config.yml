@@ -11,7 +11,7 @@ jobs:
           command: |
             docker run --rm --privileged multiarch/qemu-user-static:register
             docker build -t robertbeal/nfc-do .
-            docker tag robertbeal/nfc-do:latest robertbeal/nfc-do:$CIRCLE_SHA1"
+            docker tag robertbeal/nfc-do:latest robertbeal/nfc-do:$CIRCLE_SHA1
   push:
     docker:
       - image: docker:stable
@@ -26,7 +26,7 @@ jobs:
 
             docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
             docker push robertbeal/nfc-do:latest
-            docker push robertbeal/nfc-do:$CIRCLE_SHA1"
+            docker push robertbeal/nfc-do:$CIRCLE_SHA1
 
 workflows:
   version: 2
