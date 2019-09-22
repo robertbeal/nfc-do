@@ -1,9 +1,17 @@
 import os
 import socket
+import json
 from mfrc522 import SimpleMFRC522
 import RPi.GPIO as GPIO
 
+
+def read_cards():
+    with open("cards.json") as text:
+        return json.load(text)
+
+
 if __name__ == "__main__":
+    cards = read_cards()
     reader = SimpleMFRC522()
 
     try:
@@ -11,10 +19,6 @@ if __name__ == "__main__":
             id = reader.read()[0]
 
             ip = socket.gethostbyname("hifi.rb.kohi.uk")
-            cards = {
-                8115724414: "http://server.rb.kohi.uk:8200/MediaItems/17356.mp3",
-                647582644551: "http://server.rb.kohi.uk:8200/MediaItems/17353.mp3",
-            }
 
             if id in cards:
                 os.system("python3 dlnap.py --ip {} --play {}".format(ip, cards[id]))
