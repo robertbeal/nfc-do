@@ -11,8 +11,13 @@ def read_cards():
 
 
 if __name__ == "__main__":
+    print("Reading configuration...")
     cards = read_cards()
+    print(cards)
+
+    print("Starting reader...")
     reader = SimpleMFRC522()
+    print("Listening...")
 
     try:
         while True:
