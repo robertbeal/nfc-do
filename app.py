@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     try:
         while True:
-            id = reader.read()[0]
+            id = str(reader.read()[0])
 
             ip = socket.gethostbyname("hifi.rb.kohi.uk")
 
