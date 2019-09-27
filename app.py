@@ -13,7 +13,7 @@ def read_cards():
 
 def logger():
     log = logging.getLogger()
-    log.addHandler(logging.handlers.RotatingFileHandler("app.log", maxBytes=3, backupCount=3))
+    log.addHandler(logging.handlers.RotatingFileHandler("/data/app.log", maxBytes=3, backupCount=3))
     log.addHandler(logging.StreamHandler(sys.stdout))
     log.setLevel(logging.INFO)   
     return log 

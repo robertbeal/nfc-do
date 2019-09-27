@@ -11,6 +11,7 @@ docker run -d \
     --privileged \
     --net=host \
     --tty \
-    -v /var/nfc-do:/config:ro \
+    -v $HOME/config:/config:ro \
+    -v $HOME/data:/data \
     robertbeal/nfc-do
 ```
