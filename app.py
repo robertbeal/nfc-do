@@ -42,9 +42,9 @@ if __name__ == "__main__":
                 card = cards[id]
                 log.info(f"Read card: {id}")
 
-                if card.action == "dlna":
+                if card["action"] == "dlna":
                     ip = socket.gethostbyname("hifi.rb.kohi.uk")
-                    os.system(f"python3 dlnap.py --ip {ip} --play {card.file}")
+                    os.system(f"python3 dlnap.py --ip {ip} --play {card['file']}")
             else:
                 log.error(f"Unknown card: {id}")
     except KeyboardInterrupt:
