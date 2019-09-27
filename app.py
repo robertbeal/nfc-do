@@ -1,6 +1,8 @@
 import os
 import socket
 import json
+import logging
+from logging.handlers   
 from mfrc522 import SimpleMFRC522
 import RPi.GPIO as GPIO
 
@@ -9,25 +11,36 @@ def read_cards():
     with open("cards.json") as text:
         return json.load(text)
 
+def logger():
+    log = logging.getLogger()
+    log.addHandler(logging.handlers.RotatingFileHandler("app.log", maxBytes=3, backupCount=3))
+    log.addHandler(logging.StreamHandler(sys.stdout))
+    log.setLevel(logging.INFO)   
+    return log 
 
 if __name__ == "__main__":
-    print("Reading configuration...")
-    cards = read_cards()
-    print(cards)
+    log = logger()
 
-    print("Starting reader...")
+    log.info("Reading configuration...")
+    cards = read_cards()
+    log.info(cards)
+
+    log.info("Starting reader...")
     reader = SimpleMFRC522()
-    print("Listening...")
+    log.info("Listening...")
 
     try:
         while True:
             id = str(reader.read_id())
 
-            ip = socket.gethostbyname("hifi.rb.kohi.uk")
-
             if id in cards:
-                os.system("python3 dlnap.py --ip {} --play {}".format(ip, cards[id]))
+                card = cards[id]
+                log.info(f"Read card: {id}")
+
+                if card.action == "dlna":
+                    ip = socket.gethostbyname("hifi.rb.kohi.uk")
+                    os.system(f"python3 dlnap.py --ip {ip} --play {card.file}")
             else:
-                print("Unknown card: {}".format(id))
+                log.error(f"Unknown card: {id}")
     except KeyboardInterrupt:
         GPIO.cleanup()

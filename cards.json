@@ -1,4 +1,10 @@
 {
-  "8115724414": "http://server.rb.kohi.uk:8200/MediaItems/17356.mp3",
-  "647582644551": "http://server.rb.kohi.uk:8200/MediaItems/17353.mp3"
+  "123456789": {
+    "action": "dlna",
+    "file": "http://server/music/17356.mp3"
+  },
+  "467636363": {
+    "action": "dlna",
+    "file": "http://server/music/17353.mp3"
+  }
 }
