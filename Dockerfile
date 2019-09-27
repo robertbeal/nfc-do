@@ -25,4 +25,6 @@ RUN apk add --no-cache --virtual=build-dependencies \
 
 COPY . .
 
+VOLUME /config
+
 CMD ["python3", "app.py"]

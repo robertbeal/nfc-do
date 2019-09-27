@@ -8,7 +8,7 @@ import RPi.GPIO as GPIO
 
 
 def read_cards():
-    with open("cards.json") as text:
+    with open("/config/cards.json") as text:
         return json.load(text)
 
 def logger():
