@@ -2,7 +2,8 @@ import os
 import socket
 import json
 import logging
-from logging.handlers   
+import logging.handlers
+import sys
 from mfrc522 import SimpleMFRC522
 import RPi.GPIO as GPIO
 
@@ -11,12 +12,16 @@ def read_cards():
     with open("/config/cards.json") as text:
         return json.load(text)
 
+
 def logger():
     log = logging.getLogger()
-    log.addHandler(logging.handlers.RotatingFileHandler("/data/app.log", maxBytes=3, backupCount=3))
+    log.addHandler(
+        logging.handlers.RotatingFileHandler("/data/app.log", maxBytes=3, backupCount=3)
+    )
     log.addHandler(logging.StreamHandler(sys.stdout))
-    log.setLevel(logging.INFO)   
-    return log 
+    log.setLevel(logging.INFO)
+    return log
+
 
 if __name__ == "__main__":
     log = logger()
